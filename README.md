@@ -16,4 +16,13 @@ insiders.vscode.dev 에서 클라우드용 시험판 extension을 사용할 수 
 
 아래 링크에서 웹에서 파이썬을 실행할 수 있도록 구성했다
 
-https://insiders.vscode.dev/github/adlet0331/python_in_web_vscode?vscode-coi=
+https://vscode.dev/github/adlet0331/python_in_web_vscode?vscode-coi=
+
+백준 2560번
+
+## 2023-05-28  
+---
+저장해둔 Extension들이 다 날아가 있어서 아래의 링크를 참고하여 해결함. 설정 저장이라는걸 킬 수 있대   
+[Exporting Settings and Extensions in Visual Studio Code](https://bobbyhadz.com/blog/vscode-export-settings-and-extensions#exporting-settings-and-extensions-in-visual-studio-code)
+
+백준 2206번
