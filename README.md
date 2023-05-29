@@ -26,3 +26,8 @@ https://vscode.dev/github/adlet0331/python_in_web_vscode?vscode-coi=
 [Exporting Settings and Extensions in Visual Studio Code](https://bobbyhadz.com/blog/vscode-export-settings-and-extensions#exporting-settings-and-extensions-in-visual-studio-code)
 
 백준 2206번
+
+## 2023-05-29
+---
+
+백준 2240번
