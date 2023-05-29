@@ -31,3 +31,5 @@ https://vscode.dev/github/adlet0331/python_in_web_vscode?vscode-coi=
 ---
 
 백준 2240번
+
+백준 2482번
