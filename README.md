@@ -33,3 +33,8 @@ https://vscode.dev/github/adlet0331/python_in_web_vscode?vscode-coi=
 백준 2240번
 
 백준 2482번
+
+## 2023-06-03
+---
+
+백준 7576번
