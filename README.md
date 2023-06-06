@@ -38,3 +38,8 @@ https://vscode.dev/github/adlet0331/python_in_web_vscode?vscode-coi=
 ---
 
 백준 7576번
+
+# 2023-06-06
+---
+
+cce 예선을 나가게 되어서 cce 연습문제를 풀어보기로 했다.
