@@ -43,3 +43,8 @@ https://vscode.dev/github/adlet0331/python_in_web_vscode?vscode-coi=
 ---
 
 cce 예선을 나가게 되어서 cce 연습문제를 풀어보기로 했다.
+
+# 2023-06-18
+---
+
+백준 12100번
