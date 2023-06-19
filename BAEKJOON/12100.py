@@ -1,5 +1,4 @@
 N = int(input())
-
 gmap = list()
 for _ in range(N):
     gmap.append(list(map(int, input().split())))
@@ -18,7 +17,7 @@ def swip_diagonal(gmap):
     for i in range(n):
         for j in range(n):
             new_gmap[i][j] = gmap[j][i]
-    gmap = new_gmap
+    return new_gmap
 
 def swip_horizontal(gmap):
     for li in gmap:
@@ -31,7 +30,7 @@ for dirs in brute_force:
     for i in range(5):
         dir_index = int(dirs[i])
         if directions[dir_index][0]:
-            swip_diagonal(game_map)
+            game_map = swip_diagonal(game_map)
 
         if directions[dir_index][1]:
             swip_horizontal(game_map)
@@ -59,8 +58,8 @@ for dirs in brute_force:
         
 
         if directions[dir_index][0]:
-            swip_diagonal(game_map)
-
+            game_map = swip_diagonal(game_map)
+    #print(game_map)
     for li in game_map:
         for num in li:
             mnum = num if num > mnum else mnum
