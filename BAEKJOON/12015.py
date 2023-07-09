@@ -1,29 +1,20 @@
 N = int(input())
 data = list(map(int, input().split()))
 
-def find_less_largest_index(dplist, num):
-    front = 0
-    back = len(dplist) - 1
-    index = front + (back - front) // 2
-    while front != back:
-        index = front + (back - front) // 2
-        if dplist[index] == num:
-            return -1
-        if dplist[index] < num:
-            front = index
-        else:
-            back = index
-    return index
-
-dp = []
-for element in data:
-    if len(dp) == 0 or element > dp[-1]:
+dp = [data[0]]
+for element in data[1:]:
+    if element > dp[-1]:
         dp.append(element)
     else:
-        index = find_less_largest_index(dp, element)
-        if index == -1:
-            continue
-        dp[index] = element
+        front = 0
+        back = len(dp) - 1
+        while back > front:
+            mid = (back + front) // 2
+            if dp[mid] < element:
+                front = mid + 1
+            else:
+                back = mid
+        dp[back] = element
 
 print(len(dp))
 
