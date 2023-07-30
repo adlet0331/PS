@@ -6,10 +6,11 @@
     "configurations": [
         {
             "name" : "Python: Current File",
-            "type" : "python-web-wasm",
+            "type" : "python",
             "request": "launch",
             "program": "${file}",
-            "console": "internalConsole"
+            "console": "integratedTerminal",
+            "args": ["<","input.txt",">","output.txt"]
         }
     ]
 }
