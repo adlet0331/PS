@@ -2,6 +2,7 @@ import sys
 import bisect
 input = sys.stdin.readline
 
+# 가장 긴 부분수열 5번이라 1,2,3,4 다 넣어버림 ㅎㅎ;;
 N = int(input())
 arr = list(map(int, input().split()))
 arr = [0] + arr
