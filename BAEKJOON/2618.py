@@ -15,7 +15,7 @@ O (N ^ 2) 까지 가능
 
 N = int(input())
 num = int(input())
-data = [(1, 1)]
+data = [(-1, -1)]
 for _ in range(num):
     data.append(list(map(int, input().split(" "))))
 
@@ -25,47 +25,57 @@ def getdist(a, b):
 # 아이디어 2
 # 사각형 껍질을 채워가는 느낌
 dp = [[0 for _ in range(num + 1)] for _ in range(num + 1)]
-for index in range(1, num+1):
-    for index2 in range(0, index):
-        
-
-# 아이디어 1, 틀림
-# (movecnt, car1 pos, car2 pos)
-# dp = [[(0, (1, 1), (N, N), [])]]
-# for i in range(num):
-#     target = data[i]
-#     bcarlist = dp[-1]
-#     validlist1 = []
-#     validlist2 = []
-#     mincnt1 = 100000000
-#     mincnt2 = 100000000
-#     for (cnt, c1pos, c2pos, log) in bcarlist:
-#         # Move car 1
-#         ccnt1 = getdist(target, c1pos)
-#         if cnt + ccnt1 < mincnt1:
-#             mincnt1 = cnt + ccnt1
-#             validlist1.clear()
-#             validlist1.append((cnt + ccnt1, target, c2pos, log + [1]))
-#         elif cnt + ccnt1 == mincnt1:
-#             validlist1.append((cnt + ccnt1, target, c2pos, log + [1]))
-#         # Move car 2
-#         ccnt2 = getdist(target, c2pos)
-#         if cnt + ccnt2 < mincnt2:
-#             mincnt2 = cnt + ccnt2
-#             validlist2.clear()
-#             validlist2.append((cnt + ccnt2, c1pos, target, log + [2]))
-#         elif cnt + ccnt2 == mincnt2:
-#             validlist2.append((cnt + ccnt2, c1pos, target, log + [2]))
-        
-#     dp.append(validlist1 + validlist2)
-
-# mincnt = 1000000
-# minlog = -1
-# for (cnt, _, _, log) in dp[-1]:
-#     if cnt < mincnt:
-#         mincnt = cnt
-#         minlog = log
-
-# print(mincnt)
-# for i in minlog:
-#     print(i)
+checked = [[0 for _ in range(num + 1)] for _ in range(num + 1)]
+dp[1][0] = getdist((1,1), data[1])
+dp[0][1] = getdist((N,N), data[1])
+for i in range(2, num + 1):
+    cpos = data[i]
+    # i 현재 탐색중인 사건
+    # bindex: 사건 해결 X 하는 다른 경찰차 사건 번호
+    # bbindex: 사건 해결 O 하는 경찰차가 있었던 이전 사건 번호
+    for bindex in range(i):
+        ccnt = 10000000
+        rcnt = 10000000
+        for bbindex in range(i):
+            if bbindex == bindex or (bindex != i-1 and bbindex != i-1):
+                continue
+            bccnt = ccnt
+            brcnt = rcnt
+            if bbindex == 0:
+                ccnt = min(ccnt, dp[0][bindex] + getdist(cpos, (1, 1)))
+                rcnt = min(rcnt, dp[bindex][0] + getdist(cpos, (N, N)))
+            else:
+                ccnt = min(ccnt, dp[bbindex][bindex] + getdist(cpos, data[bbindex]))
+                rcnt = min(rcnt, dp[bindex][bbindex] + getdist(cpos, data[bbindex]))
+            if bccnt != ccnt:
+                checked[i][bindex] = bbindex
+            if brcnt != rcnt:
+                checked[bindex][i] = bbindex
+        dp[i][bindex] = ccnt
+        dp[bindex][i] = rcnt
+minlen = 1000000000
+a, b = 0, 0
+for i in range(num):
+    if dp[num][i] < minlen:
+        minlen = dp[num][i]
+        a, b = num, i
+    if dp[i][num] < minlen:
+        minlen = dp[i][num]
+        a, b = i, num
+reslist = []
+while a != 0 and b != 0:
+    if a > b:
+        reslist.append(1)
+        a = checked[a][b]
+    else:
+        reslist.append(2)
+        b = checked[a][b]
+while a > 0:
+    a -= 1
+    reslist.append(1)
+while b > 0:
+    b -= 1
+    reslist.append(2)
+reslist.reverse()
+print(minlen)
+print(*reslist, sep="\n")
